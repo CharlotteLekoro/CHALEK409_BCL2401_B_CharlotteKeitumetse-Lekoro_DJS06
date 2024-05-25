@@ -45,3 +45,7 @@ console.log(nameLengths);
 // Using spread operator to avoid mutating the original array
 const sortedProvinces = [...provinces].sort();
 console.log(sortedProvinces);
+
+//Use filter to remove provinces containing "Cape".
+const nonCapeProvinces = provinces.filter(province => !province.includes('Cape'));
+console.log(nonCapeProvinces.length);
