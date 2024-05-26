@@ -47,5 +47,13 @@ const sortedProvinces = [...provinces].sort();
 console.log(sortedProvinces);
 
 //Use filter to remove provinces containing "Cape".
-const nonCapeProvinces = provinces.filter(province => !province.includes('Cape'));
+const nonCapeProvinces = provinces.filter(
+  (province) => !province.includes("Cape")
+);
 console.log(nonCapeProvinces.length);
+
+// Using map and some to check if any name in each sub-array contains the letter 's'
+const containsSInNestedArray = nestedNames.map((subArray) =>
+  subArray.some((name) => name.toLowerCase().includes("s"))
+);
+console.log(containsSInNestedArray);
