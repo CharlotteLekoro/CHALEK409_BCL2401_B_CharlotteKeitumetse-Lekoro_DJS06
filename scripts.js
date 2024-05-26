@@ -52,8 +52,18 @@ const nonCapeProvinces = provinces.filter(
 );
 console.log(nonCapeProvinces.length);
 
-// Using map and some to check if any name in each sub-array contains the letter 's'
-const containsSInNestedArray = nestedNames.map((subArray) =>
-  subArray.some((name) => name.toLowerCase().includes("s"))
-);
-console.log(containsSInNestedArray);
+// Using map to create an array of booleans indicating if each name contains 's'
+const containsSArray = names.map((name) => name.toLowerCase().includes("s"));
+
+// Using some to check if any name contains 's'
+const anyNameContainsS = names.some((name) => name.toLowerCase().includes("s"));
+
+console.log(containsSArray);
+console.log(anyNameContainsS);
+
+//Used reduce to transform the names array into an object mapping names to their respective provinces.
+const nameToProvince = names.reduce((acc, name, index) => {
+  acc[name] = provinces[index];
+  return acc;
+}, {});
+console.log(nameToProvince);
