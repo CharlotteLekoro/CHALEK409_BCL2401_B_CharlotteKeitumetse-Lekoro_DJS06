@@ -67,3 +67,61 @@ const nameToProvince = names.reduce((acc, name, index) => {
   return acc;
 }, {});
 console.log(nameToProvince);
+
+/*Advanced exercises*/
+
+// 1. Log Products
+console.log("Products:");
+products.forEach((product) => console.log(product.product));
+
+// 2. Filter by Name Length
+console.log("Products with names shorter than or equal to 5 characters:");
+const filteredProducts = products.filter(
+  (product) => product.product.length <= 5
+);
+console.log(filteredProducts);
+
+// 3. Price Manipulation
+console.log("Total Price of Products with Valid Prices:");
+
+const totalPrice = products
+  .filter(
+    (product) =>
+      typeof product.price === "string" && product.price.trim() !== ""
+  ) // Check if product.price is a string before calling trim
+  .map((product) => Number(product.price))
+  .reduce((acc, price) => acc + price, 0);
+
+console.log(totalPrice);
+
+// 4. Concatenate Product Names
+console.log("Concatenated Product Names:");
+const concatenatedNames = products
+  .reduce((acc, product) => acc + product.product + ", ", "")
+  .slice(0, -2);
+console.log(concatenatedNames);
+
+// 5. Find Extremes in Prices
+console.log("Highest and Lowest Prices:");
+
+const prices = products
+  .filter(
+    (product) =>
+      typeof product.price === "string" && product.price.trim() !== ""
+  ) // Check if product.price is a string before calling trim
+  .map((product) => Number(product.price));
+
+const result =
+  prices.length > 0
+    ? `Highest: ${Math.max(...prices)}. Lowest: ${Math.min(...prices)}.`
+    : "No valid prices found.";
+
+console.log(result);
+
+// 6. Object Transformation
+console.log("Object Transformation:");
+const transformedProducts = products.reduce((acc, product) => {
+  acc[product.product] = { name: product.product, cost: product.price };
+  return acc;
+}, {});
+console.log(transformedProducts);
